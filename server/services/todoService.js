@@ -33,8 +33,12 @@ const deleteTodoByIdService = async (id) => {
     //     return error.message;
     // }
 };
-const updateTodoByIdService = async () => {
-
+const updateTodoByIdService = async (id, data) => {
+    const updatetodo = await Todo.findByIdAndUpdate({ _id: id }, data, { new: true, runValidators: true });
+    if (!updatetodo) {
+        return `No Todo with id: ${id}`;
+    }
+    return updatetodo
 }
 module.exports = {
     createTodoService,

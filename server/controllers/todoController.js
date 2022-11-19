@@ -48,8 +48,8 @@ const deleteTodoById = async (req, res) => {
 }
 const updateTodoById = async (req, res) => {
     try {
-        const updateTodo = await updateTodoByIdService(req.params.id);
-        res.status(200).json(pdateTodo)
+        const updateTodo = await updateTodoByIdService(req.params.id, req.body);
+        res.status(200).json(updateTodo)
     }
     catch (error) {
         res.status(500).json({ msg: error.message })
